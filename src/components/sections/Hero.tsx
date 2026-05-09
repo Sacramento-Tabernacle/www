@@ -40,7 +40,7 @@ export default function Hero() {
 
         {/* CTA */}
         <a
-          href="https://people.planningcenteronline.com/forms/YOUR_FORM_ID"
+          href="https://sactabernacle.churchcenter.com/people/forms/1224240"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-7 py-3.5 bg-delta-stone text-sage-cream text-sm font-semibold rounded-full hover:bg-sycamore transition-colors duration-200"
