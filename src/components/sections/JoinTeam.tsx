@@ -29,10 +29,12 @@ export default function JoinTeam() {
             We're gathering a launch team of people who'll pray, serve, and gather with us before our first public Sunday. If God is stirring something in you, we'd love to hear from you.
           </p>
           <a
-            href="https://example.com/sacramento-tabernacle-form"
+            href="https://people.planningcenteronline.com/forms/YOUR_FORM_ID"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent text-accent-foreground text-sm font-semibold rounded-full hover:bg-accent/90 transition-colors"
           >
-            Join the Launch Team
+            Join The Team
             <span className="text-base">→</span>
           </a>
         </div>
