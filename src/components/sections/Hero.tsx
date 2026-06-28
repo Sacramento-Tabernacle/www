@@ -53,9 +53,10 @@ export default function Hero() {
             href="https://sactabernacle.churchcenter.com/giving/to/general-tithes-offerings"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 border border-delta-stone/25 text-delta-stone text-sm font-semibold rounded-full hover:border-delta-stone hover:bg-delta-stone hover:text-sage-cream transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-delta-stone text-sage-cream text-sm font-semibold rounded-full hover:bg-sycamore transition-colors duration-200"
           >
             Give
+            <span className="text-base">→</span>
           </a>
         </div>
       </div>
