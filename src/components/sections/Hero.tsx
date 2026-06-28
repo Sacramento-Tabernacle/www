@@ -38,16 +38,26 @@ export default function Hero() {
         {/* Divider */}
         <div className="w-16 h-px bg-delta-stone/15 mb-10" />
 
-        {/* CTA */}
-        <a
-          href="https://sactabernacle.churchcenter.com/people/forms/1224240"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-7 py-3.5 bg-delta-stone text-sage-cream text-sm font-semibold rounded-full hover:bg-sycamore transition-colors duration-200"
-        >
-          Join The Team
-          <span className="text-base">→</span>
-        </a>
+        {/* CTAs */}
+        <div className="flex flex-wrap items-center gap-3">
+          <a
+            href="https://sactabernacle.churchcenter.com/people/forms/1224240"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-delta-stone text-sage-cream text-sm font-semibold rounded-full hover:bg-sycamore transition-colors duration-200"
+          >
+            Join The Team
+            <span className="text-base">→</span>
+          </a>
+          <a
+            href="https://sactabernacle.churchcenter.com/giving/to/general-tithes-offerings"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 border border-delta-stone/25 text-delta-stone text-sm font-semibold rounded-full hover:border-delta-stone hover:bg-delta-stone hover:text-sage-cream transition-colors duration-200"
+          >
+            Give
+          </a>
+        </div>
       </div>
     </section>
   );
