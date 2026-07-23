@@ -83,8 +83,11 @@ const churchJsonLd = {
       name: "California",
     },
   },
+  sameAs: [
+    "https://www.instagram.com/sactabernacle/",
+    "https://www.facebook.com/profile.php?id=61591153104635",
+  ],
   // TODO: add `address` (PostalAddress) and `geo` once a meeting location is confirmed.
-  // TODO: add `sameAs` URLs once social profiles exist (Instagram, Facebook, YouTube, etc).
 };
 
 export default function RootLayout({
