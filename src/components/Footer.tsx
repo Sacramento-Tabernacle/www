@@ -4,10 +4,12 @@ import { socials } from "@/lib/socials";
 export default function Footer() {
   return (
     <footer className="bg-sage-cream border-t border-delta-stone/8">
-      <div className="max-w-7xl mx-auto px-6 py-10 flex flex-wrap justify-between items-center gap-6">
-        <Image src="/logos/logo-black.png" alt="Sacramento Tabernacle" width={120} height={30} className="h-7 w-auto" />
+      <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 gap-6 text-center sm:grid-cols-3 sm:items-center">
+        <div className="flex justify-center sm:justify-start">
+          <Image src="/logos/logo-black.png" alt="Sacramento Tabernacle" width={120} height={30} className="h-7 w-auto" />
+        </div>
 
-        <nav aria-label="Sacramento Tabernacle on social media" className="flex items-center gap-2 order-last w-full justify-center sm:order-none sm:w-auto sm:justify-end">
+        <nav aria-label="Sacramento Tabernacle on social media" className="flex items-center justify-center gap-2">
           {socials.map((social) => (
             <a
               key={social.name}
@@ -24,7 +26,7 @@ export default function Footer() {
           ))}
         </nav>
 
-        <p className="text-delta-stone/40 text-xs">© 2026 Sacramento Tabernacle. Becoming like Jesus.</p>
+        <p className="text-delta-stone/40 text-xs sm:text-right">© 2026 Sacramento Tabernacle. Becoming like Jesus.</p>
       </div>
     </footer>
   );
