@@ -62,7 +62,7 @@ export default function Hero() {
             href="https://sactabernacle.churchcenter.com/people/forms/1272182"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 border border-delta-stone/25 text-delta-stone text-sm font-semibold rounded-full hover:bg-delta-stone hover:text-sage-cream hover:border-delta-stone transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-delta-stone text-sage-cream text-sm font-semibold rounded-full hover:bg-sycamore transition-colors duration-200"
           >
             Prayer Request
             <span className="text-base">→</span>
