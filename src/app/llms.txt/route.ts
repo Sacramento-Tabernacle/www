@@ -1,7 +1,6 @@
 import { faqs } from "@/lib/faq";
 import { beliefs } from "@/lib/beliefs";
-
-const SITE_URL = "https://sactabernacle.com";
+import { SITE_URL } from "@/lib/site";
 
 const absolute = (href: string) => (href.startsWith("/") ? `${SITE_URL}${href}` : href);
 

@@ -6,8 +6,7 @@ import Events from "@/components/sections/Events";
 import Connect from "@/components/sections/Connect";
 import Footer from "@/components/Footer";
 import { faqs } from "@/lib/faq";
-
-const SITE_URL = "https://sactabernacle.com";
+import { SITE_URL } from "@/lib/site";
 
 const faqJsonLd = {
   "@context": "https://schema.org",

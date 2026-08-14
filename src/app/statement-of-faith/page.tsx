@@ -3,8 +3,8 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { beliefs, preamble, closingNote } from "@/lib/beliefs";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://sactabernacle.com";
 const PAGE_PATH = "/statement-of-faith";
 const TITLE = "Statement of Faith";
 const DESCRIPTION =

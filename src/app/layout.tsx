@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,9 +10,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://sactabernacle.com";
-const SITE_NAME = "Sacramento Tabernacle";
-const TITLE = "Sacramento Tabernacle — A New Church in Sacramento, Launching 2027";
+const TITLE ="Sacramento Tabernacle — A New Church in Sacramento, Launching 2027";
 const DESCRIPTION =
   "Sacramento Tabernacle is a new church plant in Sacramento, California, launching January 2027. A place of becoming — join the launch team.";
 

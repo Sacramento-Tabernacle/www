@@ -89,9 +89,10 @@ This is a discoverability-driven site. The whole point of the page is to show up
 
 ### Canonical domain
 
-- **Primary / canonical**: `https://sactabernacle.com`
-- **Secondary**: `sactab.com` — should be configured in Vercel to **301 redirect** to `sactabernacle.com` so SEO equity consolidates on one domain.
-- The canonical URL is hardcoded in `src/app/layout.tsx`, `sitemap.ts`, `robots.ts`, `statement-of-faith/page.tsx`, and `llms.txt/route.ts`. If the canonical ever changes, update all five.
+- **Primary / canonical**: `https://www.sactabernacle.com` — this is what Vercel actually serves; the bare apex 307-redirects to it.
+- **Secondary**: `sactab.com` — currently 301s to the bare apex, which then 307s to `www`. That is a two-hop chain; pointing it straight at `https://www.sactabernacle.com` would be cleaner.
+- The canonical URL lives in **one place**: `SITE_URL` in `src/lib/site.ts`. Every page, the sitemap, robots, the JSON-LD, and `/llms.txt` import it. Never re-declare it in a route — it was duplicated across six files once and silently drifted from the domain Vercel serves.
+- **It must match the host Vercel serves.** If canonical and served host disagree, every canonical tag points at a URL that redirects rather than at the page itself.
 
 ### What's wired up
 
