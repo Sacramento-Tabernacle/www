@@ -1,65 +1,80 @@
-"use client";
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
-const faqs = [
-  {
-    q: "When and where do you meet?",
-    a: "We are launching our first public Sunday on June 1, 2026. Location details will be announced soon. Sign up below to be the first to know.",
-  },
-  {
-    q: "What should I expect on a Sunday?",
-    a: "Expect a warm, Spirit-led gathering centered on worship and the Word. We believe Sundays should be a place where people encounter God and are equipped to live for Him throughout the week.",
-  },
-  {
-    q: "Do you have anything for kids?",
-    a: "Yes! SacKids is our children's ministry for kids from birth through 5th grade. We believe kids are a vital part of the church family, and we're building a program designed to disciple the next generation.",
-  },
-  {
-    q: "Where do you stand theologically?",
-    a: "Sacramento Tabernacle is an evangelical, Spirit-filled church. We are Word-centered, believing Scripture is the inspired, authoritative guide for faith and life. We welcome the fullness of the Holy Spirit and believe in the power of prayer.",
-  },
-  {
-    q: "How can I get involved before launch?",
-    a: "Join our launch team! We're looking for people who will pray, serve, and gather with us before our first public Sunday. Fill out the interest form and we'll reach out to connect.",
-  },
-  {
-    q: "How do I give?",
-    a: "You can give online through our giving page. Your generosity directly supports the planting of Sacramento Tabernacle and the mission to see our city transformed by Jesus.",
-  },
-];
+import Link from "next/link";
+import { faqs } from "@/lib/faq";
 
 export default function FAQ() {
   return (
-    <section className="bg-delta-stone">
-      <div className="max-w-7xl mx-auto px-6 py-32">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-sage-cream/40 text-sm tracking-widest uppercase mb-4">FAQ</p>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-sage-cream mb-16">
-            Frequently Asked
-          </h2>
+    <section id="faq" className="relative bg-sage-cream overflow-hidden scroll-mt-16">
+      {/* Ambient wash */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-ocean-mist/20 rounded-full blur-[140px] translate-x-1/3" />
+      </div>
 
-          <Accordion multiple={false} className="space-y-2">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="border-b border-sage-cream/10 last:border-b-0"
-              >
-                <AccordionTrigger className="text-sage-cream text-left py-6 hover:no-underline hover:text-golden-valley transition-colors font-medium">
+      <div className="relative max-w-7xl mx-auto px-6 pb-28 md:pb-32 grid md:grid-cols-[1fr_1.25fr] gap-12 md:gap-16 items-start">
+        {/* Intro */}
+        <div className="md:sticky md:top-28">
+          <p className="text-delta-stone/60 text-sm tracking-widest uppercase mb-6">Questions</p>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-delta-stone mb-6 leading-[1.05]">
+            Frequently{" "}
+            <em className="text-sycamore" style={{ fontStyle: "italic" }}>
+              asked
+            </em>
+          </h2>
+          <p className="text-delta-stone/70 text-lg leading-relaxed">
+            Everything people ask us about Sacramento Tabernacle &mdash; when we launch, where
+            we&rsquo;ll meet, what we believe, and how to be part of a new church in Sacramento
+            before the doors open.
+          </p>
+
+          <Link
+            href="/statement-of-faith"
+            className="inline-flex items-center gap-2 mt-8 text-delta-stone font-semibold border-b border-delta-stone/25 pb-0.5 hover:text-sycamore hover:border-sycamore transition-colors duration-200"
+          >
+            Read our Statement of Faith
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
+
+        {/* Questions */}
+        <div className="border-t border-delta-stone/10">
+          {faqs.map((faq) => (
+            <details key={faq.q} className="group border-b border-delta-stone/10">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
+                <h3 className="text-delta-stone text-lg font-semibold leading-snug group-hover:text-sycamore transition-colors duration-200">
                   {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-sage-cream/60 leading-relaxed pb-6">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+                </h3>
+                <span
+                  aria-hidden="true"
+                  className="mt-1 flex-none text-delta-stone/40 text-xl leading-none transition-transform duration-200 group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+
+              <div className="pb-7 -mt-1 pr-10">
+                <p className="text-delta-stone/70 leading-relaxed">{faq.a}</p>
+                {faq.link &&
+                  (faq.link.external ? (
+                    <a
+                      href={faq.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-4 text-sm text-sycamore font-semibold border-b border-sycamore/30 pb-0.5 hover:border-sycamore transition-colors duration-200"
+                    >
+                      {faq.link.label}
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  ) : (
+                    <Link
+                      href={faq.link.href}
+                      className="inline-flex items-center gap-1.5 mt-4 text-sm text-sycamore font-semibold border-b border-sycamore/30 pb-0.5 hover:border-sycamore transition-colors duration-200"
+                    >
+                      {faq.link.label}
+                      <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                  ))}
+              </div>
+            </details>
+          ))}
         </div>
       </div>
     </section>

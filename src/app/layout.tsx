@@ -84,6 +84,28 @@ const churchJsonLd = {
       name: "California",
     },
   },
+  founder: {
+    "@type": "Person",
+    name: "James Alexander",
+    jobTitle: "Founding Pastor",
+  },
+  memberOf: {
+    "@type": "Organization",
+    name: "The General Council of the Assemblies of God",
+    url: "https://ag.org",
+  },
+  publishingPrinciples: `${SITE_URL}/statement-of-faith`,
+  subjectOf: {
+    "@type": "CreativeWork",
+    name: "Statement of Faith",
+    url: `${SITE_URL}/statement-of-faith`,
+  },
+  knowsAbout: [
+    "Christianity",
+    "Pentecostalism",
+    "Assemblies of God",
+    "Church planting in Sacramento, California",
+  ],
   sameAs: [
     "https://www.instagram.com/sactabernacle/",
     "https://www.facebook.com/profile.php?id=61591153104635",

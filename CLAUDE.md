@@ -21,15 +21,37 @@ npm run lint   # eslint
 
 ## Current page structure
 
-The site is a single page (`src/app/page.tsx`). Only these three components are active:
+There are two routes:
+
+```
+/                    → src/app/page.tsx
+/statement-of-faith  → src/app/statement-of-faith/page.tsx
+```
+
+The landing page (`/`) is composed of:
 
 ```
 Navbar   → src/components/Navbar.tsx
 Hero     → src/components/sections/Hero.tsx
+Pastors  → src/components/sections/Pastors.tsx
+Events   → src/components/sections/Events.tsx   (anchor: #events)
+FAQ      → src/components/sections/FAQ.tsx      (anchor: #faq)
+Connect  → src/components/sections/Connect.tsx  (anchor: #connect)
 Footer   → src/components/Footer.tsx
 ```
 
-The `src/components/sections/` folder contains several unused section components (About, Vision, Pastors, JoinTeam, CoreValues, FAQ, Marquee) that were built but removed to keep the launch page focused. Do not delete them — they may be re-enabled post-launch.
+The `src/components/sections/` folder contains several unused section components (About, Vision, JoinTeam, CoreValues, Marquee) that were built but removed to keep the launch page focused. Do not delete them — they may be re-enabled post-launch.
+
+### Content lives in `src/lib/`, not in JSX
+
+Two content files are the single source of truth, each consumed by more than one output. Edit the data file, never the rendered copy:
+
+- **`src/lib/faq.ts`** — feeds the FAQ section, the `FAQPage` JSON-LD in `page.tsx`, and `/llms.txt`.
+- **`src/lib/beliefs.ts`** — the 16 Assemblies of God fundamental truths; feeds `/statement-of-faith` (body + table of contents + JSON-LD) and `/llms.txt`.
+
+Source PDFs for both are in `docs/`.
+
+The FAQ uses native `<details>`/`<summary>` rather than the shadcn `Accordion` on purpose: answers stay in the DOM when collapsed and render without JS, so crawlers and AI scrapers always see the full text. Don't swap it for a JS accordion.
 
 ## Brand colors
 
@@ -69,15 +91,18 @@ This is a discoverability-driven site. The whole point of the page is to show up
 
 - **Primary / canonical**: `https://sactabernacle.com`
 - **Secondary**: `sactab.com` — should be configured in Vercel to **301 redirect** to `sactabernacle.com` so SEO equity consolidates on one domain.
-- The canonical URL is hardcoded in `src/app/layout.tsx`, `sitemap.ts`, and `robots.ts`. If the canonical ever changes, update all three.
+- The canonical URL is hardcoded in `src/app/layout.tsx`, `sitemap.ts`, `robots.ts`, `statement-of-faith/page.tsx`, and `llms.txt/route.ts`. If the canonical ever changes, update all five.
 
 ### What's wired up
 
 - **Metadata** (`src/app/layout.tsx`): title template, description, keywords, Open Graph, Twitter card, canonical, robots directives, `metadataBase`.
-- **JSON-LD structured data** (`src/app/layout.tsx`): `Church` schema injected via a `<script type="application/ld+json">` tag in the body. Includes name, slogan, foundingDate, areaServed (Sacramento, California). Critical for local search and rich results.
-- **Sitemap** (`src/app/sitemap.ts`): served at `/sitemap.xml` via Next.js convention.
+- **JSON-LD structured data** (`src/app/layout.tsx`): `Church` schema injected via a `<script type="application/ld+json">` tag in the body, on every page. Includes name, slogan, foundingDate, areaServed (Sacramento, California), founder, `memberOf` (Assemblies of God), and `publishingPrinciples` pointing at the Statement of Faith. Critical for local search and rich results.
+- **FAQ structured data** (`src/app/page.tsx`): `FAQPage` schema generated from `src/lib/faq.ts`. Eligible for FAQ rich results and heavily used by AI search.
+- **Statement of Faith structured data** (`src/app/statement-of-faith/page.tsx`): `WebPage` + `BreadcrumbList` in an `@graph`, with each of the 16 truths exposed as a `hasPart` anchor URL.
+- **Sitemap** (`src/app/sitemap.ts`): served at `/sitemap.xml` via Next.js convention. Add an entry here for every new route.
 - **Robots** (`src/app/robots.ts`): served at `/robots.txt` via Next.js convention.
 - **Open Graph image** (`src/app/opengraph-image.tsx`): dynamically generated 1200×630 PNG using brand colors and the Oook headline font. Served at `/opengraph-image`.
+- **`/llms.txt`** (`src/app/llms.txt/route.ts`): a plain-text summary of the church for AI crawlers, generated at build time from `src/lib/faq.ts` and `src/lib/beliefs.ts` so it can't drift from the site. This used to be a static `public/llms.txt` — that file was removed, because a file in `public/` shadows the route and would silently serve stale content.
 
 ### Rules to follow when editing
 
@@ -106,7 +131,8 @@ These have more impact than anything in the code, especially for "churches in Sa
 - **Meeting address**: Once a launch location is confirmed, (a) add a `PostalAddress` block to the `Church` JSON-LD in `src/app/layout.tsx`, (b) surface the address in the footer for NAP consistency, and (c) add it to the Google Business Profile.
 - **Social profiles**: Once Instagram/Facebook/YouTube/etc. profiles exist, add them to the `sameAs` array in the JSON-LD and link them from the footer.
 - **`sactab.com` redirect**: Configure `sactab.com` to 301-redirect to `sactabernacle.com` in Vercel's domain settings.
-- **Content depth**: The page has very thin text content, which caps SEO ranking potential. Consider re-enabling at least one of the disabled sections (About, Vision) with copy that mentions Sacramento naturally.
+- **Content depth**: Largely addressed by the Pastors narrative, the FAQ, and the Statement of Faith page. The remaining gap is the Hero itself, which is still nearly copy-free. Re-enabling About or Vision with copy that mentions Sacramento naturally is still the next best win.
+- **Submit the new page**: Request indexing for `/statement-of-faith` in Google Search Console, and confirm the FAQ rich result validates in the Rich Results Test once deployed.
 
 ## Assets
 
@@ -128,7 +154,7 @@ A PDF branding guide is at `docs/brand-guide.pdf` — reference it for color, ty
 
 ## What to avoid
 
-- Don't add pages or routes without discussing with the team — the site is intentionally one page.
+- Don't add pages or routes without discussing with the team — the site is intentionally small (currently `/` and `/statement-of-faith`).
 - Don't introduce dark backgrounds (`bg-delta-stone`) on the main page — the light cream aesthetic is intentional.
-- Don't add nav links until there's actual content to link to.
+- Don't add nav links — the navbar is intentionally logo-only. Secondary content (FAQ, Statement of Faith) is reached from the footer nav and from in-section links, deliberately. `/statement-of-faith` being low-profile in the UI is a choice, not an oversight; it stays fully discoverable to crawlers via the sitemap, JSON-LD, and `/llms.txt`.
 - Don't commit the Planning Center form URL until it's confirmed — use the placeholder.

@@ -50,21 +50,21 @@ export default function Hero() {
             <span className="text-base">→</span>
           </a>
           <a
-            href="https://sactabernacle.churchcenter.com/giving/to/general-tithes-offerings"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-delta-stone text-sage-cream text-sm font-semibold rounded-full hover:bg-sycamore transition-colors duration-200"
-          >
-            Give
-            <span className="text-base">→</span>
-          </a>
-          <a
             href="https://sactabernacle.churchcenter.com/people/forms/1272182"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-delta-stone text-sage-cream text-sm font-semibold rounded-full hover:bg-sycamore transition-colors duration-200"
           >
             Prayer Request
+            <span className="text-base">→</span>
+          </a>
+          <a
+            href="https://sactabernacle.churchcenter.com/giving/to/general-tithes-offerings"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-delta-stone text-sage-cream text-sm font-semibold rounded-full hover:bg-sycamore transition-colors duration-200"
+          >
+            Give
             <span className="text-base">→</span>
           </a>
         </div>
