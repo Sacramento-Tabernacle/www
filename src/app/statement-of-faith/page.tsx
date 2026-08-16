@@ -83,8 +83,8 @@ export default function StatementOfFaithPage() {
         {/* Header */}
         <section className="relative bg-sage-cream overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-ocean-mist/20 rounded-full blur-[150px] -translate-x-1/3 -translate-y-1/3" />
-            <div className="absolute top-1/2 right-0 w-[450px] h-[450px] bg-golden-valley/20 rounded-full blur-[130px]" />
+            <div className="wash absolute top-0 left-0 w-[1080px] h-[1080px] bg-ocean-mist/20 -translate-x-1/3 -translate-y-1/3" />
+            <div className="wash absolute top-1/2 right-0 w-[860px] h-[860px] bg-golden-valley/20" />
           </div>
 
           <div className="relative max-w-7xl mx-auto px-6 pt-32 md:pt-40 pb-16 md:pb-20">
@@ -217,8 +217,8 @@ export default function StatementOfFaithPage() {
           <div className="max-w-7xl mx-auto px-6 pb-28 md:pb-32">
             <div className="relative overflow-hidden rounded-3xl border border-delta-stone/10 bg-sycamore px-8 py-16 md:px-16 md:py-20 text-center">
               <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute -top-1/4 right-0 w-[400px] h-[400px] bg-golden-valley/20 rounded-full blur-[110px]" />
-                <div className="absolute -bottom-1/3 left-0 w-[400px] h-[400px] bg-ocean-mist/20 rounded-full blur-[110px]" />
+                <div className="wash absolute -top-1/4 right-0 w-[750px] h-[750px] bg-golden-valley/20" />
+                <div className="wash absolute -bottom-1/3 left-0 w-[750px] h-[750px] bg-ocean-mist/20" />
               </div>
 
               <div className="relative">
