@@ -5,13 +5,28 @@ export default function Hero() {
     <section className="relative min-h-screen bg-sage-cream flex items-end pt-16 overflow-hidden">
       {/* Ambient washes */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-ocean-mist/20 rounded-full blur-[160px] translate-y-2/3 -translate-x-1/2" />
-        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-golden-valley/20 rounded-full blur-[120px]" />
+        <div className="wash absolute bottom-0 left-0 w-[1100px] h-[1100px] bg-ocean-mist/20 translate-y-2/3 -translate-x-1/2" />
+        <div className="wash absolute top-1/3 right-0 w-[880px] h-[880px] bg-golden-valley/20" />
       </div>
 
       {/* Faded fingerprint icon */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-[0.06] translate-x-1/4">
-        <Image src="/logos/icon-black.png" alt="" width={700} height={700} loading="eager" style={{ width: "700px", height: "auto" }} />
+        {/*
+          Decorative only, and sitting at 6% opacity. It previously declared a
+          square 700x700 for a 979x1278 source, so the reserved box was the wrong
+          shape and the hero shifted once the real image arrived. `loading="eager"`
+          also had Next preload it at up to 1920w, putting a 109KB background
+          flourish in front of the headline font in the network queue.
+        */}
+        <Image
+          src="/logos/icon-black.png"
+          alt=""
+          width={700}
+          height={914}
+          quality={40}
+          sizes="700px"
+          style={{ width: "700px", height: "auto" }}
+        />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 pb-24 pt-32 w-full">
