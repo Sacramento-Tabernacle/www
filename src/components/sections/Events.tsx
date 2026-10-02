@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Events() {
   return (
     <section id="events" className="bg-sage-cream">
-      <div className="max-w-7xl mx-auto px-6 pb-28 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 pb-16 md:pb-32">
         <div className="relative overflow-hidden rounded-3xl border border-delta-stone/10 bg-sycamore grid md:grid-cols-2 items-stretch">
           {/* Ambient wash */}
           <div className="absolute inset-0 pointer-events-none">

@@ -8,7 +8,7 @@ export default function Connect() {
         <div className="wash absolute top-0 right-1/4 w-[940px] h-[940px] bg-golden-valley/20 -translate-y-1/3" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 pb-28 md:pb-32">
+      <div className="relative max-w-7xl mx-auto px-6 pb-16 md:pb-32">
         <div className="max-w-2xl mx-auto text-center mb-12">
           <p className="text-delta-stone/60 text-sm tracking-widest uppercase mb-6">Stay Connected</p>
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-delta-stone mb-6 leading-[1.05]">
@@ -39,7 +39,7 @@ export default function Connect() {
               </span>
               <span className="flex-1 min-w-0">
                 <span className="block text-delta-stone font-semibold">{social.name}</span>
-                <span className="block text-delta-stone/50 text-sm truncate">{social.handle}</span>
+                <span className="block text-delta-stone/60 text-sm truncate">{social.handle}</span>
               </span>
               <span className="text-delta-stone/30 text-lg group-hover:text-sycamore group-hover:translate-x-0.5 transition duration-200" aria-hidden="true">
                 &rarr;

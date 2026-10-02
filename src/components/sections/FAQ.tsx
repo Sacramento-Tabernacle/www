@@ -3,13 +3,13 @@ import { faqs } from "@/lib/faq";
 
 export default function FAQ() {
   return (
-    <section id="faq" className="relative bg-sage-cream overflow-hidden scroll-mt-16">
+    <section id="faq" className="relative bg-sage-cream overflow-hidden scroll-mt-24">
       {/* Ambient wash */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="wash absolute bottom-0 right-0 w-[940px] h-[940px] bg-ocean-mist/20 translate-x-1/3" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 pb-28 md:pb-32 grid md:grid-cols-[1fr_1.25fr] gap-12 md:gap-16 items-start">
+      <div className="relative max-w-7xl mx-auto px-6 pb-16 md:pb-32 grid md:grid-cols-[1fr_1.25fr] gap-8 md:gap-16 items-start">
         {/* Intro */}
         <div className="md:sticky md:top-28">
           <p className="text-delta-stone/60 text-sm tracking-widest uppercase mb-6">Questions</p>
@@ -27,7 +27,7 @@ export default function FAQ() {
 
           <Link
             href="/statement-of-faith"
-            className="inline-flex items-center gap-2 mt-8 text-delta-stone font-semibold border-b border-delta-stone/25 pb-0.5 hover:text-sycamore hover:border-sycamore transition-colors duration-200"
+            className="inline-flex min-h-[44px] items-center gap-2 mt-6 md:mt-8 text-delta-stone font-semibold border-b border-delta-stone/25 pb-0.5 hover:text-sycamore hover:border-sycamore transition-colors duration-200"
           >
             Read our Statement of Faith
             <span aria-hidden="true">&rarr;</span>
@@ -50,7 +50,7 @@ export default function FAQ() {
                 </span>
               </summary>
 
-              <div className="pb-7 -mt-1 pr-10">
+              <div className="pb-7 -mt-1 sm:pr-10">
                 <p className="text-delta-stone/70 leading-relaxed">{faq.a}</p>
                 {faq.link &&
                   (faq.link.external ? (
@@ -58,7 +58,7 @@ export default function FAQ() {
                       href={faq.link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 mt-4 text-sm text-sycamore font-semibold border-b border-sycamore/30 pb-0.5 hover:border-sycamore transition-colors duration-200"
+                      className="inline-flex min-h-[44px] items-center gap-1.5 mt-4 text-sm text-sycamore font-semibold border-b border-sycamore/30 pb-0.5 hover:border-sycamore transition-colors duration-200"
                     >
                       {faq.link.label}
                       <span aria-hidden="true">&rarr;</span>
@@ -66,7 +66,7 @@ export default function FAQ() {
                   ) : (
                     <Link
                       href={faq.link.href}
-                      className="inline-flex items-center gap-1.5 mt-4 text-sm text-sycamore font-semibold border-b border-sycamore/30 pb-0.5 hover:border-sycamore transition-colors duration-200"
+                      className="inline-flex min-h-[44px] items-center gap-1.5 mt-4 text-sm text-sycamore font-semibold border-b border-sycamore/30 pb-0.5 hover:border-sycamore transition-colors duration-200"
                     >
                       {faq.link.label}
                       <span aria-hidden="true">&rarr;</span>

@@ -34,7 +34,7 @@ export default function Hero() {
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2.5 border border-delta-stone/20 rounded-full px-4 py-1.5 mb-6 lg:mb-10">
             <span className="w-1.5 h-1.5 rounded-full bg-sycamore animate-pulse" />
-            <span className="text-delta-stone/50 text-xs tracking-[0.2em] uppercase">Launching January 2027</span>
+            <span className="text-delta-stone/60 text-xs tracking-[0.2em] uppercase">Launching January 2027</span>
           </div>
 
           {/* Headline */}
