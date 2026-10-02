@@ -5,7 +5,7 @@ export default function Connect() {
     <section id="connect" className="relative bg-sage-cream overflow-hidden">
       {/* Ambient wash */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-golden-valley/20 rounded-full blur-[140px] -translate-y-1/3" />
+        <div className="wash absolute top-0 right-1/4 w-[940px] h-[940px] bg-golden-valley/20 -translate-y-1/3" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 pb-28 md:pb-32">

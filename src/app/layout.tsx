@@ -119,6 +119,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <head>
+        {/*
+          The Oook heading font is only referenced from globals.css, so the
+          browser cannot discover it until the stylesheet has been fetched and
+          parsed. It sets the h1 — the LCP element — so that late start shows up
+          as the headline painting in the fallback serif and then reflowing.
+          crossOrigin is required: @font-face fetches are CORS-mode even
+          same-origin, and without it the preload is not reused.
+        */}
+        <link
+          rel="preload"
+          href="/fonts/oook-medium.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"

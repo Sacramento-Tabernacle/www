@@ -6,7 +6,7 @@ export default function FAQ() {
     <section id="faq" className="relative bg-sage-cream overflow-hidden scroll-mt-16">
       {/* Ambient wash */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-ocean-mist/20 rounded-full blur-[140px] translate-x-1/3" />
+        <div className="wash absolute bottom-0 right-0 w-[940px] h-[940px] bg-ocean-mist/20 translate-x-1/3" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 pb-28 md:pb-32 grid md:grid-cols-[1fr_1.25fr] gap-12 md:gap-16 items-start">

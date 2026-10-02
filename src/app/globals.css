@@ -2,9 +2,15 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* woff2 first — it is 55% smaller than the otf and universally supported now.
+   The otf stays as a fallback. This font renders the h1, which is the page's
+   LCP element, so layout.tsx also preloads it: discovered from CSS alone it
+   starts too late and the headline visibly reflows out of the fallback serif. */
 @font-face {
   font-family: "Oook";
-  src: url("/fonts/oook-medium.otf") format("opentype");
+  src:
+    url("/fonts/oook-medium.woff2") format("woff2"),
+    url("/fonts/oook-medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -17,6 +23,26 @@
 
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+/*
+ * Ambient color washes.
+ *
+ * These used to be solid `bg-<color>/20` circles softened with `blur-[160px]`.
+ * A blur that wide is deceptively expensive: the compositor has to rasterize a
+ * layer far larger than the element itself and run a large-radius Gaussian over
+ * it, and the landing page carries seven of them behind a `backdrop-blur`
+ * navbar. That is real per-frame work for something purely decorative.
+ *
+ * A radial alpha mask paints the identical soft falloff as a plain background
+ * — no filter layer, no convolution. Pair it with a brand background utility
+ * (`bg-ocean-mist/20`) so the color still comes from the tokens, and size the
+ * element to the extent the blur used to reach (roughly width + 3x the old
+ * blur radius) rather than the old box size.
+ */
+@utility wash {
+  -webkit-mask-image: radial-gradient(closest-side, #000 0%, #000 20%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 0%, #000 20%, transparent 100%);
 }
 
 @custom-variant dark (&:is(.dark *));

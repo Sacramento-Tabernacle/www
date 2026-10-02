@@ -7,8 +7,8 @@ export default function Events() {
         <div className="relative overflow-hidden rounded-3xl border border-delta-stone/10 bg-sycamore grid md:grid-cols-2 items-stretch">
           {/* Ambient wash */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute -top-1/4 right-0 w-[400px] h-[400px] bg-golden-valley/20 rounded-full blur-[110px]" />
-            <div className="absolute -bottom-1/3 left-0 w-[400px] h-[400px] bg-ocean-mist/20 rounded-full blur-[110px]" />
+            <div className="wash absolute -top-1/4 right-0 w-[750px] h-[750px] bg-golden-valley/20" />
+            <div className="wash absolute -bottom-1/3 left-0 w-[750px] h-[750px] bg-ocean-mist/20" />
           </div>
 
           <div className="relative px-8 py-16 md:px-12 md:py-20 flex flex-col items-start justify-center">

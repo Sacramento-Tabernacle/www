@@ -5,7 +5,7 @@ export default function Pastors() {
     <section id="pastor" className="relative bg-sage-cream overflow-hidden">
       {/* Ambient wash */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-ocean-mist/20 rounded-full blur-[130px] -translate-x-1/3" />
+        <div className="wash absolute top-1/4 left-0 w-[900px] h-[900px] bg-ocean-mist/20 -translate-x-1/3" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 py-28 md:py-32 grid md:grid-cols-2 gap-12 md:gap-16 items-start">
@@ -16,7 +16,10 @@ export default function Pastors() {
               src="/alexanders.jpeg"
               alt="Pastor James Alexander with his wife Chelsey and their family"
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              /* The column is half of a max-w-7xl grid, so it never exceeds
+                 ~600px. `50vw` made wide monitors pull the 1920w/2048w variant
+                 for a slot that renders at 584px. */
+              sizes="(max-width: 768px) 100vw, 600px"
               className="object-cover"
             />
           </div>
@@ -28,7 +31,6 @@ export default function Pastors() {
             </blockquote>
             <p className="text-delta-stone/50 text-sm font-medium mt-4">&mdash; John 1:12</p>
           </div>
-
         </div>
 
         {/* Narrative */}
