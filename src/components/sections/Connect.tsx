@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { socials } from "@/lib/socials";
 
 export default function Connect() {
@@ -20,6 +21,36 @@ export default function Connect() {
           <p className="text-delta-stone/70 text-lg leading-relaxed">
             We&rsquo;re building in the open. Follow along for updates, prayer, and glimpses of what God is doing as we count down to January 2027.
           </p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto mb-8 sm:mb-12 sm:pb-6">
+          <div className="relative col-span-2 sm:col-span-1 aspect-[16/9] sm:aspect-[4/5] overflow-hidden rounded-tl-[2.5rem] rounded-br-[2.5rem] rounded-tr-xl rounded-bl-xl">
+            <Image
+              src="/photos/community-friendships.webp"
+              alt="Two women smiling together at a Sacramento Tabernacle gathering"
+              fill
+              sizes="(max-width: 639px) calc(100vw - 48px), (max-width: 816px) 30vw, 245px"
+              className="object-cover object-[center_40%]"
+            />
+          </div>
+          <div className="relative aspect-[4/3] sm:aspect-[4/5] sm:translate-y-6 overflow-hidden rounded-2xl sm:rounded-3xl">
+            <Image
+              src="/photos/community-faces.webp"
+              alt="Two men smiling at a Sacramento Tabernacle gathering"
+              fill
+              sizes="(max-width: 639px) calc((100vw - 60px) / 2), (max-width: 816px) 30vw, 245px"
+              className="object-cover object-[center_35%]"
+            />
+          </div>
+          <div className="relative aspect-[4/3] sm:aspect-[4/5] overflow-hidden rounded-tl-xl rounded-br-xl rounded-tr-[2.5rem] rounded-bl-[2.5rem]">
+            <Image
+              src="/photos/community-families.webp"
+              alt="Two women and a young child together at a Sacramento Tabernacle gathering"
+              fill
+              sizes="(max-width: 639px) calc((100vw - 60px) / 2), (max-width: 816px) 30vw, 245px"
+              className="object-cover object-[center_40%]"
+            />
+          </div>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
