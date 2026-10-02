@@ -97,13 +97,13 @@ This is a discoverability-driven site. The whole point of the page is to show up
 ### What's wired up
 
 - **Metadata** (`src/app/layout.tsx`): title template, description, keywords, Open Graph, Twitter card, canonical, robots directives, `metadataBase`.
-- **JSON-LD structured data** (`src/app/layout.tsx`): `Church` schema injected via a `<script type="application/ld+json">` tag in the body, on every page. Includes name, slogan, foundingDate, areaServed (Sacramento, California), founder, `memberOf` (Assemblies of God), and `publishingPrinciples` pointing at the Statement of Faith. Critical for local search and rich results.
-- **FAQ structured data** (`src/app/page.tsx`): `FAQPage` schema generated from `src/lib/faq.ts`. Eligible for FAQ rich results and heavily used by AI search.
+- **JSON-LD structured data** (`src/app/layout.tsx`): `Church` + `Organization` schema injected via a `<script type="application/ld+json">` tag in the body, on every page. Includes stable identity, name, slogan, areaServed (Sacramento, California), founder, `memberOf` (Assemblies of God), and `publishingPrinciples` pointing at the Statement of Faith. The `Organization` type supports organizational properties on the `Church` entity. A linked `WebSite` node and page references keep the identity consistent. Do not invent a founding date, address, phone, service schedule, or event details.
+- **FAQ structured data** (`src/app/page.tsx`): `FAQPage` schema generated from `src/lib/faq.ts`, with stable question anchors shared by the visible FAQ and `/llms.txt`. It helps describe the content; do not promise FAQ rich results or AI citations. Google no longer shows FAQ rich results (2026).
 - **Statement of Faith structured data** (`src/app/statement-of-faith/page.tsx`): `WebPage` + `BreadcrumbList` in an `@graph`, with each of the 16 truths exposed as a `hasPart` anchor URL.
-- **Sitemap** (`src/app/sitemap.ts`): served at `/sitemap.xml` via Next.js convention. Add an entry here for every new route.
-- **Robots** (`src/app/robots.ts`): served at `/robots.txt` via Next.js convention.
+- **Sitemap** (`src/app/sitemap.ts`): served at `/sitemap.xml` via Next.js convention. Add an entry for every new public page. Do not use the build time as `lastModified`; omit it until reliable content revision dates are available.
+- **Robots** (`src/app/robots.ts`): served at `/robots.txt` via Next.js convention. The wildcard allows search crawlers, including Googlebot, Bingbot, OAI-SearchBot and PerplexityBot. AI search discovery and model training are separate controls; do not change training access as a side effect of SEO work. Hosting/firewall rules can still block crawlers, so check verified crawler traffic in Vercel.
 - **Open Graph image** (`src/app/opengraph-image.tsx`): dynamically generated 1200×630 PNG using brand colors and the Oook headline font. Served at `/opengraph-image`.
-- **`/llms.txt`** (`src/app/llms.txt/route.ts`): a plain-text summary of the church for AI crawlers, generated at build time from `src/lib/faq.ts` and `src/lib/beliefs.ts` so it can't drift from the site. This used to be a static `public/llms.txt` — that file was removed, because a file in `public/` shadows the route and would silently serve stale content.
+- **`/llms.txt`** (`src/app/llms.txt/route.ts`): a Markdown guide to the church for agents, following the llms.txt proposal, generated at build time from `src/lib/faq.ts` and `src/lib/beliefs.ts` so it can't drift from the site. The HTML head advertises the guide with `rel="describedby"`; its linked FAQ answers and belief topics share source data with visible pages. It is a helpful optional guide, not a guarantee of rankings or AI citations, and is not required for Google AI features. This used to be a static `public/llms.txt` — that file was removed, because a file in `public/` shadows the route and would silently serve stale content.
 
 ### Rules to follow when editing
 
@@ -121,8 +121,8 @@ This is a discoverability-driven site. The whole point of the page is to show up
 
 These have more impact than anything in the code, especially for "churches in Sacramento":
 
-1. **Google Business Profile** — create one at business.google.com. Set service area = Sacramento. Mark as "opening soon" with a January 2027 date. Add photos, link to sactabernacle.com.
-2. **Google Search Console** — verify the domain, submit `https://sactabernacle.com/sitemap.xml`, monitor coverage and queries.
+1. **Google Business Profile** — check eligibility and verify the confirmed location/opening details before creating or changing a profile at business.google.com. Future-opening profiles become visible 90 days before the opening date. Add photos and link to https://www.sactabernacle.com; do not invent a public street address.
+2. **Google Search Console** — verify the domain, submit `https://www.sactabernacle.com/sitemap.xml`, monitor coverage and queries.
 3. **Bing Webmaster Tools** — same idea; lower priority than Google but free and easy.
 4. **Backlinks** — reach out to denominational/network sites, partner churches, local Christian directories, and local press to link to the site.
 
@@ -133,7 +133,7 @@ These have more impact than anything in the code, especially for "churches in Sa
 - **Social profiles**: Once Instagram/Facebook/YouTube/etc. profiles exist, add them to the `sameAs` array in the JSON-LD and link them from the footer.
 - **`sactab.com` redirect**: Configure `sactab.com` to 301-redirect to `sactabernacle.com` in Vercel's domain settings.
 - **Content depth**: Largely addressed by the Pastors narrative, the FAQ, and the Statement of Faith page. The remaining gap is the Hero itself, which is still nearly copy-free. Re-enabling About or Vision with copy that mentions Sacramento naturally is still the next best win.
-- **Submit the new page**: Request indexing for `/statement-of-faith` in Google Search Console, and confirm the FAQ rich result validates in the Rich Results Test once deployed.
+- **Submit the new page**: Request indexing for `/statement-of-faith` in Google Search Console, and check structured data with Schema.org Validator. FAQ markup does not produce Google FAQ rich results.
 
 ## Assets
 

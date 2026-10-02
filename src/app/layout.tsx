@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { socials } from "@/lib/socials";
 import "./globals.css";
 
 const inter = Inter({
@@ -65,8 +66,8 @@ export const metadata: Metadata = {
 };
 
 const churchJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Church",
+  "@type": ["Church", "Organization"],
+  "@id": `${SITE_URL}/#church`,
   name: SITE_NAME,
   alternateName: ["Sac Tab", "Sacramento Tab"],
   url: SITE_URL,
@@ -74,7 +75,7 @@ const churchJsonLd = {
   image: `${SITE_URL}/opengraph-image`,
   description: DESCRIPTION,
   slogan: "A place of becoming",
-  foundingDate: "2027-01",
+  // The announced launch month is not a confirmed founding date.
   areaServed: {
     "@type": "City",
     name: "Sacramento",
@@ -105,11 +106,24 @@ const churchJsonLd = {
     "Assemblies of God",
     "Church planting in Sacramento, California",
   ],
-  sameAs: [
-    "https://www.instagram.com/sactabernacle/",
-    "https://www.facebook.com/profile.php?id=61591153104635",
-  ],
+  sameAs: socials.map((social) => social.href),
   // TODO: add `address` (PostalAddress) and `geo` once a meeting location is confirmed.
+};
+
+const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    churchJsonLd,
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      alternateName: "Sac Tab",
+      inLanguage: "en-US",
+      publisher: { "@id": `${SITE_URL}/#church` },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -120,6 +134,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
         {/*
           The Oook heading font is only referenced from globals.css, so the
           browser cannot discover it until the stylesheet has been fetched and
@@ -139,7 +154,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(churchJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
         {children}
         <Analytics />

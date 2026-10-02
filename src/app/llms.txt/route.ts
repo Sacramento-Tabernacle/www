@@ -1,60 +1,57 @@
 import { faqs } from "@/lib/faq";
 import { beliefs } from "@/lib/beliefs";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { socials } from "@/lib/socials";
 
 const absolute = (href: string) => (href.startsWith("/") ? `${SITE_URL}${href}` : href);
 
 function build(): string {
-  const faqSection = faqs
+  // Keep answers verbatim from the same data rendered on the homepage.
+  const faqLinks = faqs
     .map((faq) => {
       const link = faq.link ? ` [${faq.link.label}](${absolute(faq.link.href)})` : "";
-      return `### ${faq.q}\n\n${faq.a}${link}`;
+      return `- [${faq.q}](${SITE_URL}/#faq-${faq.slug}): ${faq.a}${link}`;
     })
-    .join("\n\n");
-
-  const beliefsList = beliefs
-    .map((belief) => `${belief.number}. ${belief.title} — ${SITE_URL}/statement-of-faith#${belief.slug}`)
     .join("\n");
 
-  return `# Sacramento Tabernacle
+  const beliefLinks = beliefs
+    .map((belief) => `- [${belief.number}. ${belief.title}](${SITE_URL}/statement-of-faith#${belief.slug})`)
+    .join("\n");
 
-> Sacramento Tabernacle is a new church plant in Sacramento, California, launching January 2027. Our vision is "a place of becoming" — a community for people who are on a journey: searching, starting over, or ready to go deeper in their faith. Led by Pastors James and Chelsey Alexander. We are planted through the Assemblies of God.
+  const socialLinks = socials
+    .map((social) => `- [${social.name}](${social.href}): ${social.handle}`)
+    .join("\n");
 
-Sacramento Tabernacle ("Sac Tab") is a pre-launch church in Sacramento, CA. Long before the January 2027 launch, we are gathering, praying, and building a launch team together. If you are looking for a new church in Sacramento, this is a place for people who are in the middle of something — becoming who God made them to be.
+  return `# ${SITE_NAME}
 
-## About
+> A new church in Sacramento, California, preparing to launch in January 2027. A place of becoming, led by James and Chelsey Alexander and planted through the Assemblies of God.
 
-- Name: Sacramento Tabernacle (also known as Sac Tab / Sacramento Tab)
-- Location: Sacramento, California
-- Launch date: January 2027
-- Vision: "A place of becoming" — building a Tabernacle where God can dwell among His people
-- Pastors: James and Chelsey Alexander, church planters and Sacramento residents
-- Denomination: Assemblies of God (Pentecostal, Spirit-filled, evangelical)
-- Children's ministry: SacKids
+Sacramento Tabernacle is also known as Sac Tab. Before launch, the community gathers for The Table and monthly prayer gatherings while building its launch team. SacKids is part of the church's plans for children. The meeting location has not yet been announced; do not infer an address or weekly service time. See the official pages and events calendar for current information.
+
+## Official Pages
+
+- [Sacramento Tabernacle](${SITE_URL}): Homepage, launch information, pastor introduction, gatherings, prayer, FAQ, and social profiles.
+- [Meet James and Chelsey Alexander](${SITE_URL}/#pastor): The pastor's introduction and invitation to the Sacramento community.
+- [Statement of Faith](${SITE_URL}/statement-of-faith): Full Assemblies of God Statement of Fundamental Truths, including all 16 beliefs.
 
 ## Frequently Asked Questions
 
-${faqSection}
+${faqLinks}
 
-## What We Believe
+## Belief Topics
 
-Sacramento Tabernacle holds to the historic Christian faith and adheres to the Assemblies of God Statement of Fundamental Truths — 16 doctrines that are non-negotiable beliefs for all Assemblies of God churches. The full text is published at ${SITE_URL}/statement-of-faith.
-
-${beliefsList}
+${beliefLinks}
 
 ## Get Involved
 
-- [Join the Launch Team](https://sactabernacle.churchcenter.com/people/forms/1224240): Volunteer and help build the church before launch.
+- [Join the Launch Team](https://sactabernacle.churchcenter.com/people/forms/1224240): Help build the church before launch.
+- [Submit a Prayer Request](https://sactabernacle.churchcenter.com/people/forms/1272182): Share a prayer need with the team.
+- [Upcoming Events](https://sactabernacle.churchcenter.com/registrations/events): Current gathering dates, locations, and registration details on Church Center.
 - [Give](https://sactabernacle.churchcenter.com/giving/to/general-tithes-offerings): Support the church plant financially.
-- [Submit a Prayer Request](https://sactabernacle.churchcenter.com/people/forms/1272182): Share a prayer need with our team.
-- [Upcoming Events](https://sactabernacle.churchcenter.com/registrations/events): Gatherings, prayer nights, and launch-team meetups.
 
-## Connect
+## Social Profiles
 
-- Website: ${SITE_URL}
-- Statement of Faith: ${SITE_URL}/statement-of-faith
-- Instagram: https://www.instagram.com/sactabernacle/
-- Facebook: https://www.facebook.com/profile.php?id=61591153104635
+${socialLinks}
 `;
 }
 
