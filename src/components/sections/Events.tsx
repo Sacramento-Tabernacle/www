@@ -32,11 +32,11 @@ export default function Events() {
 
           <div className="relative row-start-1 md:col-start-2 aspect-[4/3] md:aspect-auto md:min-h-[540px]">
             <Image
-              src="/photos/community-gathering.webp"
-              alt="People getting to know each other at a Sacramento Tabernacle outdoor gathering"
+              src="/photos/community-event-friendship.webp"
+              alt="Two women smiling together at a Sacramento Tabernacle outdoor community event"
               fill
               sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 50vw, 616px"
-              className="object-cover object-[center_30%] md:object-center"
+              className="object-cover object-center"
             />
           </div>
         </div>
