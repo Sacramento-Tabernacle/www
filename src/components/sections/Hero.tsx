@@ -54,12 +54,12 @@ export default function Hero() {
 
         <figure className="relative aspect-[16/10] sm:aspect-[2/1] lg:aspect-[4/3] w-full lg:max-w-lg mx-auto overflow-hidden rounded-tl-[2rem] rounded-br-[2rem] rounded-tr-lg rounded-bl-lg lg:rounded-3xl lg:col-start-2 lg:row-start-1 lg:row-span-2">
           <Image
-            src="/photos/community-together.webp"
-            alt="Adults and children gathered together at a Sacramento Tabernacle community event"
+            src="/photos/community-outdoor-gathering.webp"
+            alt="A group smiling and talking outdoors at a Sacramento Tabernacle community gathering"
             fill
             preload
             sizes="(max-width: 672px) calc(100vw - 48px), (max-width: 1024px) 624px, (max-width: 1280px) 45vw, 512px"
-            className="object-cover object-[center_55%] lg:object-center"
+            className="object-cover object-[center_20%]"
           />
           <figcaption className="absolute bottom-3 left-3 px-3 py-1.5 rounded-full bg-sage-cream/95 text-delta-stone text-xs font-medium lg:hidden">
             There&rsquo;s room for you.
