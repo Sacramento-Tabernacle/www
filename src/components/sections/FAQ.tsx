@@ -10,7 +10,7 @@ export default function FAQ() {
         <div className="wash absolute bottom-0 right-0 w-[940px] h-[940px] bg-ocean-mist/20 translate-x-1/3" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 pb-16 md:pb-32 grid md:grid-cols-[1fr_1.25fr] gap-8 md:gap-16 items-start">
+      <div className="relative max-w-7xl mx-auto px-6 pt-8 md:pt-12 pb-16 md:pb-32 grid md:grid-cols-[1fr_1.25fr] gap-8 md:gap-16 items-start">
         {/* Intro */}
         <div className="contents md:block">
           <div>

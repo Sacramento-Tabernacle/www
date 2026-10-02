@@ -42,8 +42,8 @@ export default function Home() {
         <Pastors />
         <Events />
         <Prayer />
-        <FAQ />
         <Connect />
+        <FAQ />
       </main>
       <Footer />
     </>
