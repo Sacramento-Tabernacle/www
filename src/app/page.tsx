@@ -7,16 +7,19 @@ import Prayer from "@/components/sections/Prayer";
 import Connect from "@/components/sections/Connect";
 import Footer from "@/components/Footer";
 import { faqs } from "@/lib/faq";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
 
 const faqJsonLd = {
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": `${SITE_URL}/#faq`,
   name: "Sacramento Tabernacle — Frequently Asked Questions",
   inLanguage: "en-US",
+  isPartOf: { "@id": `${SITE_URL}/#webpage` },
+  about: { "@id": `${SITE_URL}/#church` },
   mainEntity: faqs.map((faq) => ({
     "@type": "Question",
+    "@id": `${SITE_URL}/#faq-${faq.slug}`,
+    url: `${SITE_URL}/#faq-${faq.slug}`,
     name: faq.q,
     acceptedAnswer: {
       "@type": "Answer",
@@ -29,12 +32,30 @@ const faqJsonLd = {
   })),
 };
 
+const homeJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/#webpage`,
+      url: SITE_URL,
+      name: `${SITE_NAME} — A New Church in Sacramento, Launching 2027`,
+      inLanguage: "en-US",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${SITE_URL}/#church` },
+      publisher: { "@id": `${SITE_URL}/#church` },
+      hasPart: { "@id": `${SITE_URL}/#faq` },
+    },
+    faqJsonLd,
+  ],
+};
+
 export default function Home() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
       />
       <Navbar />
       <main id="main-content" tabIndex={-1}>

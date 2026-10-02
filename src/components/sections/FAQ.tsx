@@ -49,43 +49,45 @@ export default function FAQ() {
         {/* Questions */}
         <div className="order-2 md:order-none border-t border-delta-stone/10">
           {faqs.map((faq) => (
-            <details key={faq.q} className="group border-b border-delta-stone/10">
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
-                <h3 className="text-delta-stone text-lg font-semibold leading-snug group-hover:text-sycamore transition-colors duration-200">
-                  {faq.q}
-                </h3>
-                <span
-                  aria-hidden="true"
-                  className="mt-1 flex-none text-delta-stone/40 text-xl leading-none transition-transform duration-200 group-open:rotate-45"
-                >
-                  +
-                </span>
-              </summary>
+            <div id={`faq-${faq.slug}`} key={faq.slug} className="scroll-mt-24">
+              <details className="group border-b border-delta-stone/10">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
+                  <h3 className="text-delta-stone text-lg font-semibold leading-snug group-hover:text-sycamore transition-colors duration-200">
+                    {faq.q}
+                  </h3>
+                  <span
+                    aria-hidden="true"
+                    className="mt-1 flex-none text-delta-stone/40 text-xl leading-none transition-transform duration-200 group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
 
-              <div className="pb-7 -mt-1 sm:pr-10">
-                <p className="text-delta-stone/70 leading-relaxed">{faq.a}</p>
-                {faq.link &&
-                  (faq.link.external ? (
-                    <a
-                      href={faq.link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-[44px] items-center gap-1.5 mt-4 text-sm text-sycamore font-semibold border-b border-sycamore/30 pb-0.5 hover:border-sycamore transition-colors duration-200"
-                    >
-                      {faq.link.label}
-                      <span aria-hidden="true">&rarr;</span>
-                    </a>
-                  ) : (
-                    <Link
-                      href={faq.link.href}
-                      className="inline-flex min-h-[44px] items-center gap-1.5 mt-4 text-sm text-sycamore font-semibold border-b border-sycamore/30 pb-0.5 hover:border-sycamore transition-colors duration-200"
-                    >
-                      {faq.link.label}
-                      <span aria-hidden="true">&rarr;</span>
-                    </Link>
-                  ))}
-              </div>
-            </details>
+                <div className="pb-7 -mt-1 sm:pr-10">
+                  <p className="text-delta-stone/70 leading-relaxed">{faq.a}</p>
+                  {faq.link &&
+                    (faq.link.external ? (
+                      <a
+                        href={faq.link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-[44px] items-center gap-1.5 mt-4 text-sm text-sycamore font-semibold border-b border-sycamore/30 pb-0.5 hover:border-sycamore transition-colors duration-200"
+                      >
+                        {faq.link.label}
+                        <span aria-hidden="true">&rarr;</span>
+                      </a>
+                    ) : (
+                      <Link
+                        href={faq.link.href}
+                        className="inline-flex min-h-[44px] items-center gap-1.5 mt-4 text-sm text-sycamore font-semibold border-b border-sycamore/30 pb-0.5 hover:border-sycamore transition-colors duration-200"
+                      >
+                        {faq.link.label}
+                        <span aria-hidden="true">&rarr;</span>
+                      </Link>
+                    ))}
+                </div>
+              </details>
+            </div>
           ))}
         </div>
       </div>
