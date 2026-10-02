@@ -3,6 +3,7 @@ import Hero from "@/components/sections/Hero";
 import Pastors from "@/components/sections/Pastors";
 import FAQ from "@/components/sections/FAQ";
 import Events from "@/components/sections/Events";
+import Prayer from "@/components/sections/Prayer";
 import Connect from "@/components/sections/Connect";
 import Footer from "@/components/Footer";
 import { faqs } from "@/lib/faq";
@@ -40,6 +41,7 @@ export default function Home() {
         <Hero />
         <Pastors />
         <Events />
+        <Prayer />
         <FAQ />
         <Connect />
       </main>

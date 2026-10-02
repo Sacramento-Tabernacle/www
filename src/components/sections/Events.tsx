@@ -1,20 +1,22 @@
+import Image from "next/image";
+
 export default function Events() {
   return (
     <section id="events" className="bg-sage-cream">
       <div className="max-w-7xl mx-auto px-6 pb-28 md:pb-32">
-        <div className="relative overflow-hidden rounded-3xl border border-delta-stone/10 bg-sycamore px-8 py-16 md:px-16 md:py-20 text-center">
+        <div className="relative overflow-hidden rounded-3xl border border-delta-stone/10 bg-sycamore grid md:grid-cols-2 items-stretch">
           {/* Ambient wash */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute -top-1/4 right-0 w-[400px] h-[400px] bg-golden-valley/20 rounded-full blur-[110px]" />
             <div className="absolute -bottom-1/3 left-0 w-[400px] h-[400px] bg-ocean-mist/20 rounded-full blur-[110px]" />
           </div>
 
-          <div className="relative">
+          <div className="relative px-8 py-16 md:px-12 md:py-20 flex flex-col items-start justify-center">
             <p className="text-sage-cream/60 text-sm tracking-widest uppercase mb-6">Gather With Us</p>
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-sage-cream mb-6 leading-[1.05]">
               Upcoming Events
             </h2>
-            <p className="text-sage-cream/70 text-lg leading-relaxed max-w-xl mx-auto mb-10">
+            <p className="text-sage-cream/80 text-lg leading-relaxed max-w-xl mb-10">
               Long before we launch, we&rsquo;re gathering, praying, and building together. Come be part of what God is doing in Sacramento.
             </p>
             <a
@@ -26,6 +28,16 @@ export default function Events() {
               View Events
               <span className="text-base">&rarr;</span>
             </a>
+          </div>
+
+          <div className="relative aspect-[4/5] md:aspect-auto md:min-h-[540px]">
+            <Image
+              src="/photos/community-gathering.webp"
+              alt="People getting to know each other at a Sacramento Tabernacle outdoor gathering"
+              fill
+              sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 50vw, 616px"
+              className="object-cover"
+            />
           </div>
         </div>
       </div>
