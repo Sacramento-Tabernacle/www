@@ -12,11 +12,9 @@ export default function Hero() {
       {/* Faded fingerprint icon */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-[0.06] translate-x-1/4">
         {/*
-          Decorative only, and sitting at 6% opacity. It previously declared a
-          square 700x700 for a 979x1278 source, so the reserved box was the wrong
-          shape and the hero shifted once the real image arrived. `loading="eager"`
-          also had Next preload it at up to 1920w, putting a 109KB background
-          flourish in front of the headline font in the network queue.
+          Reserve the fingerprint's natural aspect ratio to avoid layout shifts.
+          It is above the fold, but decorative: load it with low fetch priority
+          and no preload so the heading font and community photo take precedence.
         */}
         <Image
           src="/logos/icon-black.png"
@@ -24,6 +22,8 @@ export default function Hero() {
           width={700}
           height={914}
           quality={40}
+          loading="eager"
+          fetchPriority="low"
           sizes="700px"
           style={{ width: "700px", height: "auto" }}
         />
