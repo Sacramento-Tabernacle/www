@@ -4,13 +4,13 @@ export default function Prayer() {
   return (
     <section id="prayer" className="bg-sage-cream">
       <div className="max-w-7xl mx-auto px-6 pb-28 md:pb-32 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
+        <div className="relative aspect-[4/3] md:aspect-[4/5] overflow-hidden rounded-3xl">
           <Image
             src="/photos/prayer-gathering.webp"
             alt="A quiet moment of prayer at a Sacramento Tabernacle gathering"
             fill
             sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 50vw, 584px"
-            className="object-cover"
+            className="object-cover object-[center_30%] md:object-center"
           />
         </div>
 

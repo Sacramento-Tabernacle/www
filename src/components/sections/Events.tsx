@@ -11,7 +11,7 @@ export default function Events() {
             <div className="wash absolute -bottom-1/3 left-0 w-[750px] h-[750px] bg-ocean-mist/20" />
           </div>
 
-          <div className="relative px-8 py-16 md:px-12 md:py-20 flex flex-col items-start justify-center">
+          <div className="relative row-start-2 md:row-start-1 md:col-start-1 px-8 py-10 md:px-12 md:py-20 flex flex-col items-start justify-center">
             <p className="text-sage-cream/60 text-sm tracking-widest uppercase mb-6">Gather With Us</p>
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-sage-cream mb-6 leading-[1.05]">
               Upcoming Events
@@ -30,13 +30,13 @@ export default function Events() {
             </a>
           </div>
 
-          <div className="relative aspect-[4/5] md:aspect-auto md:min-h-[540px]">
+          <div className="relative row-start-1 md:col-start-2 aspect-[4/3] md:aspect-auto md:min-h-[540px]">
             <Image
               src="/photos/community-gathering.webp"
               alt="People getting to know each other at a Sacramento Tabernacle outdoor gathering"
               fill
               sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 50vw, 616px"
-              className="object-cover"
+              className="object-cover object-[center_30%] md:object-center"
             />
           </div>
         </div>
